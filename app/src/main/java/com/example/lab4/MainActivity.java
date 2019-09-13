@@ -2,7 +2,6 @@ package com.example.lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.button);
-        surname = (EditText) findViewById(R.id.surname);
-        name = (EditText) findViewById(R.id.name);
-        textView = (TextView) findViewById(R.id.textView);
+        button = findViewById(R.id.button);
+        surname = findViewById(R.id.surname);
+        name = findViewById(R.id.name);
+        textView = findViewById(R.id.textView);
         ExistBase(fname);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -49,13 +48,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public boolean ExistBase (String fname)
+    public void ExistBase (String fname)
     {
-        boolean rc = false;
         File f = new File(super.getFilesDir(),fname );
-        if(rc = f.exists()) Toast.makeText(this,"Файл существует",Toast.LENGTH_SHORT).show();
+        if(f.exists()) Toast.makeText(this,"Файл существует",Toast.LENGTH_SHORT).show();
         else Toast.makeText(this,"Файл"+fname+"не найден",Toast.LENGTH_SHORT).show();
-        return rc;
     }
     public void Save (View view )
 
